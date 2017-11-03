@@ -82,66 +82,67 @@
 
 						<div id="map"></div>
 							<script>
-							var a = {{temp.value}}
+
 							function initMap() {
+
 								var kobelco = {lat:13.552641, lng:80.016036};
+
 								var iiit = {lat:13.555439, lng:80.027366};
+
 								var ifmr = {lat:13.549934, lng:80.000071};
+
 								var map = new google.maps.Map(document.getElementById('map'), {
+
 								zoom: 15,
+
 								center: kobelco
+
 								});
-								if({{soil_mois.value}}>40)
-							    {
-							    var marker1 = new google.maps.Marker({
-							      position: iiit,
-							      map: map,
-							      icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-							    });
-								}
-							    else{
-							         var marker1 = new google.maps.Marker({
-							      position: iiit,
-							      map: map
-							    });
 
-							    }
-							    if(a>10)
-							    {
-							    var marker2 = new google.maps.Marker({
-							      position: ifmr,
-							      map: map,
-							      icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-							    });}
-							    else{
-							         var marker2 = new google.maps.Marker({
-							      position: ifmr,
-							      map: map
-							    });
+								var marker1 = new google.maps.Marker({
 
-							    }
-								// var marker1 = new google.maps.Marker({
-								// position: iiit,
-								// map: map
-								// });
+								position: iiit,
 
-								// var marker2 = new google.maps.Marker({
-								// position: ifmr,
-								// map: map
-								// });
+								map: map
+
+								});
+
+
+
+								var marker2 = new google.maps.Marker({
+
+								position: ifmr,
+
+								map: map
+
+								});
+
+
 
 								var infowindow1 = new google.maps.InfoWindow({
+
 								content: '<b>Plant 1</b>'
+
 								});
+
+
 
 								var infowindow2 = new google.maps.InfoWindow({
+
 								content: '<b>Plant 2</b>'
+
 								});
 
+
+
 								infowindow1.open(map, marker1);
+
 								infowindow2.open(map, marker2);
 
+
+
 							}
+
 							</script>
 							<script async defer
 							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy7wSlEOIGjQwmvxDA8iu2BTjyyKzQZHU&callback=initMap">

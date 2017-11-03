@@ -15,7 +15,7 @@ from .models import Plant
 def add_plant(request):
     if request.method == 'POST':
         plant = Plant()
-        if (not request.POST.get('alias')) or len(Plant.objects.filter(alias=request.POST.get('alias'), parent=request.user))!=0 :
+        if (not request.POST.get('alias')) or len(Plant.objects.filter(alias=request.POST.get('alias')))!=0 :
             return HttpResponseRedirect(reverse('plants:dashboard'))
         plant.alias = request.POST.get('alias')
         plant.parent = request.user
@@ -53,20 +53,8 @@ def add_plant(request):
 def viewdashboard(request):
     print(request.user)
     plants = Plant.objects.filter(parent=request.user)
-    plant =plants[0]
     print(plants)
-    sm_sensors = SensorData.objects.filter(parent__sensor_type='Soil Moisture', parent__parent=plant)
-    temp_sensors = SensorData.objects.filter(parent__sensor_type='Temperature', parent__parent=plant)
-    if len(sm_sensors)>0:
-        soil_mois = sm_sensors.latest('id')
-    else:
-        soil_mois=None    
-    if len(temp_sensors)>0:    
-        temp = temp_sensors.latest('id')
-    else:
-        temp=None
-    print(soil_mois.value)    
-    return render(request, 'userdashboard.html', {'username': request.user.username, 'plants': plants, 'soil_mois':soil_mois, 'temp':temp})
+    return render(request, 'userdashboard.html', {'username': request.user.username, 'plants': plants})
 
 @login_required(login_url='/')
 def last_readings(request, username):
@@ -150,13 +138,6 @@ def plantboard(request, username):
     return render(request, "plant1.html", context=context)
     return HttpResponse(str(id))
 
-# def get_latest_readings(request):
-#     if (request.method=='POST'):
-#         plant = request.POST.get('plant')
-#         plant = Plant.objects.get(plant=plant)
-#         stype = request.POST.get('sensor')
-#         readings = SensorData.objects.filter(parent=)
-#     return HttpResponse(status=400)    
 
 
 
