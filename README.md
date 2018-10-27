@@ -1,5 +1,6 @@
 # Water-Management-System
 ITWS Project made in DJango. Open the given website to see the working of the project.
+The projects aims to ease the farmers life through smart irrigation system.
 
 Requirements: Django<2.0
 
