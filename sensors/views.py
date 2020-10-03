@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import SensorData, Sensor, Actuator
 from plants.models import Plant
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 # Create your views here.
