@@ -4,7 +4,7 @@ from .models import  UserForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, logout, login as auth_login
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 # Create your views here.
 
